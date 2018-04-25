@@ -8,3 +8,4 @@ npm-debug.log
 /.idea
 
 .env.local
+*API_KEY.js
