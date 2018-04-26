@@ -5,14 +5,18 @@ import YTSearch from 'youtube-api-search'
 
 import SearchBar from './components/search_bar'
 
-// "Downwards Data Flow" - because index.js is the most parent component, it is
-// responsible for fetching data (so that it can be passed downstream)
-YTSearch({key: API_KEY, term: 'surfboards'}, function (data) {
-	console.log(data)
-});
-
 // Class-based component
 class App extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = { videos: [] };
+
+		YTSearch({key: API_KEY, term: 'surfboards'}, function (data) {
+			this.setState({ videos: data })
+		});
+	}
+
 	render() {
 		return (
 			<div>
