@@ -1,7 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { API_KEY } from './API_KEY'
+import YTSearch from 'youtube-api-search'
+
 import SeachBar from './components/search_bar'
+
+// "Downwards Data Flow" - because index.js is the most parent component, it is
+// responsible for fetching data (so that it can be passed downstream)
+YTSearch({key: API_KEY, term: 'surfboards'}, function (data) {
+	console.log(data)
+});
 
 // Create a new component to produce html
 const App = () => {
