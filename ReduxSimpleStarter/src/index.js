@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import { API_KEY } from './API_KEY'
 import YTSearch from 'youtube-api-search'
-
 import SearchBar from './components/search_bar'
+import VideoList from './components/video_list'
 
 // Class-based component
 class App extends Component {
@@ -21,6 +21,7 @@ class App extends Component {
 		return (
 			<div>
 				<SearchBar/>
+				<VideoList videos={this.state.videos}/>
 			</div>
 		)
 	}
