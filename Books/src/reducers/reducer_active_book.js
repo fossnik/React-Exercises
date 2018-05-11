@@ -3,12 +3,12 @@
  */
 
 export default function(state = null, action) {
-	// (state = null) is ES6 syntax to set the parameter to null by default
 	switch (action.type) {
 		case 'BOOK_SELECTED':
 			return action.payload;
+
+		default:
+			return state;
 	}
 
-	// (state = null) handles the initial case in which the book is not defined.
-	return state;
 }
