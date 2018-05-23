@@ -9,7 +9,6 @@ class WeatherList extends Component {
 	}
 
 	render() {
-		console.log(this.props)
 		return <table className="table table-hover">
 			<thead>
 				<tr>
@@ -26,11 +25,6 @@ class WeatherList extends Component {
 	}
 }
 
-// function mapStateToProps(state) {
-// 	return { weather: state.weather };
-// }
-
-// ES-6 Syntax
 function mapStateToProps({ weather }) {
 	return { weather };
 }

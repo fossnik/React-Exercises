@@ -1,5 +1,5 @@
 {
-  "name": "asyncredux",
+  "name": "Weather",
   "version": "1.0.0",
   "description": "Intermediate Redux",
   "main": "index.js",
