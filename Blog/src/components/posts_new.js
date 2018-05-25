@@ -13,6 +13,8 @@ class PostsNew extends Component {
 				// emit properties of this object as props to the input tag
 				{...field.input}
 			/>
+			{/*// display error messages*/}
+			{field.meta.error}
 		</div>
 	}
 
@@ -37,6 +39,23 @@ class PostsNew extends Component {
 	}
 }
 
+// validate the values that the user has entered into form
+function validate(values) {
+	const errors = {};
+
+	if (!values.title)
+		errors.title = "Enter a title!";
+
+	if (!values.categories)
+		errors.categories = "Enter some categories!";
+
+	if (!values.content)
+		errors.content = "Enter some content!";
+
+	return errors;
+}
+
 export default reduxForm({
+	validate,
 	form: 'PostsNewForm'
 })(PostsNew)
