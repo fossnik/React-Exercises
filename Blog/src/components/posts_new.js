@@ -5,7 +5,9 @@ import { Field, reduxForm } from 'redux-form'
 
 class PostsNew extends Component {
 	renderField(field) {
-		return <div className="form-group">
+		const className = `form-group ${field.meta.touched && field.meta.error ? 'has-danger' : ''}`;
+
+		return <div className={className}>
 			<label>{field.label}</label>
 			<input
 				className="form-control"
@@ -13,21 +15,29 @@ class PostsNew extends Component {
 				// emit properties of this object as props to the input tag
 				{...field.input}
 			/>
-			{/*// display error messages*/}
-			{field.meta.error}
+			{/*// display error messages after the field has been edited (touched)*/}
+			<div className="text-help">
+				{field.meta.touched ? field.meta.error : ''}
+			</div>
 		</div>
 	}
 
+	onSubmit(values) {
+		console.log(values)
+	}
+
 	render() {
-		return <form>
+		const { handleSubmit } = this.props;
+
+		return <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
 			<Field
-				label="Title"
+				label="Title For Post"
 				name="title"
 				component={this.renderField}
 			/>
 			<Field
-				label="Tags"
-				name="tags"
+				label="Categories"
+				name="categories"
 				component={this.renderField}
 			/>
 			<Field
@@ -35,6 +45,7 @@ class PostsNew extends Component {
 				name="content"
 				component={this.renderField}
 			/>
+			<button type="submit" className="btn btn-primary">Submit</button>
 		</form>
 	}
 }
